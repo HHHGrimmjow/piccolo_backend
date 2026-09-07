@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/piccolo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   servlet:
@@ -33,5 +33,5 @@ piccolo:
     secret: PiccoloSecretKey2024ForJWTTokenGenerationAndValidation
     expiration: 86400000  # 24 hours in milliseconds
   upload:
-    path: uploads/
+    path: D:/piccolo/uploads/
     allowed-types: jpg,jpeg,png,gif,webp

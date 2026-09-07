@@ -42,11 +42,10 @@ public class FileController {
         String newFilename = UUID.randomUUID().toString().replace("-", "") + "." + extension;
 
         try {
-            Path dir = Paths.get(uploadPath);
-            if (!Files.exists(dir)) {
-                Files.createDirectories(dir);
-            }
-            file.transferTo(dir.resolve(newFilename).toFile());
+            Path dir = Paths.get(uploadPath).toAbsolutePath();
+            Files.createDirectories(dir);
+            Path targetPath = dir.resolve(newFilename);
+            file.transferTo(targetPath.toFile());
         } catch (IOException e) {
             throw new BusinessException("文件上传失败: " + e.getMessage());
         }

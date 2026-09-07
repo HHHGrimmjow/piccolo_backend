@@ -1,11 +1,15 @@
 package com.piccolo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.piccolo.common.BusinessException;
 import com.piccolo.common.Constants;
 import com.piccolo.dto.LoginDTO;
 import com.piccolo.dto.RegisterDTO;
+import com.piccolo.entity.Comment;
+import com.piccolo.entity.Topic;
 import com.piccolo.entity.User;
+import com.piccolo.entity.VoteRecord;
 import com.piccolo.mapper.CommentMapper;
 import com.piccolo.mapper.TopicMapper;
 import com.piccolo.mapper.VoteRecordMapper;
@@ -110,11 +114,11 @@ public class UserServiceImpl implements UserService {
 
         // 统计数据
         vo.setTopicCount(Math.toIntExact(topicMapper.selectCount(
-                new LambdaQueryWrapper<>().eq("creator_id", user.getId()))));
+                new QueryWrapper<Topic>().eq("creator_id", user.getId()))));
         vo.setVoteCount(Math.toIntExact(voteRecordMapper.selectCount(
-                new LambdaQueryWrapper<>().eq("user_id", user.getId()))));
+                new QueryWrapper<VoteRecord>().eq("user_id", user.getId()))));
         vo.setCommentCount(Math.toIntExact(commentMapper.selectCount(
-                new LambdaQueryWrapper<>().eq("user_id", user.getId()))));
+                new QueryWrapper<Comment>().eq("user_id", user.getId()))));
         return vo;
     }
 }

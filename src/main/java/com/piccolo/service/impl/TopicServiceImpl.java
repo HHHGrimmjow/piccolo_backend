@@ -1,10 +1,12 @@
 package com.piccolo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.piccolo.common.BusinessException;
 import com.piccolo.common.Constants;
 import com.piccolo.dto.TopicDTO;
+import com.piccolo.entity.Comment;
 import com.piccolo.entity.Topic;
 import com.piccolo.entity.TopicOption;
 import com.piccolo.entity.User;
@@ -201,9 +203,9 @@ public class TopicServiceImpl implements TopicService {
 
         // 评论数和选项数
         vo.setCommentCount(Math.toIntExact(commentMapper.selectCount(
-                new LambdaQueryWrapper<>().eq("topic_id", topic.getId()))));
+                new QueryWrapper<Comment>().eq("topic_id", topic.getId()))));
         vo.setOptionCount(Math.toIntExact(topicOptionMapper.selectCount(
-                new LambdaQueryWrapper<>().eq("topic_id", topic.getId()))));
+                new QueryWrapper<TopicOption>().eq("topic_id", topic.getId()))));
 
         return vo;
     }
