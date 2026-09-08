@@ -3,6 +3,7 @@ package com.piccolo.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import java.time.LocalDate;
 
 @Data
 public class RegisterDTO {
@@ -17,4 +18,6 @@ public class RegisterDTO {
 
     @Size(max = 50, message = "昵称最长50个字符")
     private String nickname;
+
+    private LocalDate birthday;
 }

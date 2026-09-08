@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
         user.setNickname(StringUtils.hasText(dto.getNickname()) ? dto.getNickname() : dto.getUsername());
         user.setAvatar(Constants.DEFAULT_AVATAR);
         user.setBio("");
+        user.setBirthday(dto.getBirthday());
         userMapper.insert(user);
     }
 
@@ -110,6 +111,7 @@ public class UserServiceImpl implements UserService {
         vo.setNickname(user.getNickname());
         vo.setAvatar(user.getAvatar());
         vo.setBio(user.getBio());
+        vo.setBirthday(user.getBirthday());
         vo.setCreatedAt(user.getCreatedAt());
 
         // 统计数据

@@ -2,6 +2,7 @@ package com.piccolo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -20,6 +21,8 @@ public class User {
     private String avatar;
 
     private String bio;
+
+    private LocalDate birthday;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createdAt;

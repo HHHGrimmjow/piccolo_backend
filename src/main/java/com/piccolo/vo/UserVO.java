@@ -1,6 +1,7 @@
 package com.piccolo.vo;
 
 import lombok.Data;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -10,6 +11,7 @@ public class UserVO {
     private String nickname;
     private String avatar;
     private String bio;
+    private LocalDate birthday;
     private LocalDateTime createdAt;
 
     // 统计数据
